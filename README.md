@@ -9,7 +9,7 @@ Simple .net core command line utility for checking your pwned passwords against 
 Clone this repository and compile with dotnet tooling. (or visual studio code)
 ### Download
 Download from AppVeyor continuous integration.
-[Latest build](https://ci.appveyor.com/api/projects/hopp/pwned-password-check-net/artifacts/pwned-password-check-net.zip?bramch=master)
+[Latest build](https://ci.appveyor.com/api/projects/hopp/pwned-password-check-net/artifacts/pwned-password-check-net.zip?branch=master)
 
 ## Linux
     sudo snap install dotnet-sdk --classic
@@ -45,11 +45,12 @@ Note: This is default export from KeePass.
 
 ## Parameters
 
-There are two parameters:
-|Paremeter|Long Name|Description|
+There are two parameters required:
+
+|Parameter|Long Name|Description|
 |---|---|---|
 |p|path| Path to your csv file|
-|l|layout| Choose Layout. Options: KeePass
+|l|layout| Choose Layout. Options: KeePass|
 
 
 # Output
