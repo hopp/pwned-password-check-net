@@ -29,8 +29,8 @@ Download from AppVeyor continuous integration.
 Export your passwords to csv file with following structure:
 
 | Account | LoginName | Password | WebSite | Comments |
-| ---     | --- | ---| --- | --- |
-| My favourite service|your_account@your_domain.com|password|www.myfavouriteservice.nowhere|comment
+| --- | --- | ---| --- | --- |
+| My favourite service|your_account@your_domain.com|password|www.myfavouriteservice.nowhere|comment|
 
 Note: This is default export from KeePass.
 
