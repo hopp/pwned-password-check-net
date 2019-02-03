@@ -1,7 +1,7 @@
 # pwned-password-check-net
-Simple .net core command line utility for checking your pwned passwords against Troy Hunt's Have I Been Pwned? service. Export passwords into CSV file and run pwned-password-check-net.dll.
+Simple .net core command line utility for checking your pwned accounts against Troy Hunt's Have I Been Pwned? service. Export accounts into CSV file and run pwned-password-check-net.dll.
 
-> dotnet pwned-password-check-net.dll -p pwd.csv -l KeePass
+> dotnet pwned-password-check-net.dll -p accounts.csv -l KeePass
 
 # Install
 ## Windows
@@ -20,9 +20,10 @@ Download from AppVeyor continuous integration.
 
 # Prepare accounts
 ## Linux
-    cat << EOF > pwd.csv
+    cat << EOF > accounts.csv
     Account,LoginName,Password,WebSite,Comments
-    my_account,firstname.lastname@gmail.com,pwd,gmail.com,email provider
+    my_gaccount,firstname.lastname@gmail.com,-,gmail.com,email provider
+    my_yaccount,firstname.lastname@yahoo.com,-,yahoo.com,email provider
     EOF
 
 ## Manual
@@ -37,11 +38,10 @@ Note: This is default export from KeePass.
 # Run
 
 ## Windows
-> dotnet pwned-password-check-net.dll -p path_to_csv -l KeePass
+    dotnet pwned-password-check-net.dll -p path_to_csv -l KeePass
 
 ## Linux
-
-> dotnet-sdk.dotnet pwned-password-check-net.dll -p path_to_csv -l KeePass
+    dotnet-sdk.dotnet pwned-password-check-net.dll -p path_to_csv -l KeePass
 
 ## Parameters
 
