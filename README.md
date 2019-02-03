@@ -1,33 +1,59 @@
 # pwned-password-check-net
-Simple .net core command line utility for checking your pwned passwords against Troy Hunt's Have I Been Pwned? service.
+Simple .net core command line utility for checking your pwned accounts against Troy Hunt's Have I Been Pwned? service. Export accounts into CSV file and run pwned-password-check-net.dll.
 
+> dotnet pwned-password-check-net.dll -p accounts.csv -l KeePass
 
-# Usage
-## Build from source code
+# Install
+## Windows
+### Build from source code
 Clone this repository and compile with dotnet tooling. (or visual studio code)
-## Download
+### Download
 Download from AppVeyor continuous integration.
-[Latest build](https://ci.appveyor.com/api/projects/hopp/pwned-password-check-net/artifacts/pwned-password-check-net.zip?bramch=master)
+[Latest build](https://ci.appveyor.com/api/projects/hopp/pwned-password-check-net/artifacts/pwned-password-check-net.zip?branch=master)
 
-## Export passwords
-Export your passwords to csv file, with structure
+## Linux
+    sudo snap install dotnet-sdk --classic
+    mkdir ./pwned && cd ./pwned
+    wget https://ci.appveyor.com/api/projects/hopp/pwned-password-check-net/artifacts/pwned-password-check-net.zip?branch=master -O master.zip
+    unzip master.zip
+    chmod 644 *
 
-| Account | LoginName | Password | WebSite |
-| ---     | --- | ---| --- |
-| My favourite service|your_account@your_domain.com|password|www.myfavouriteservice.nowhere
-This is default export from KeePass.
-## Run
-There are two parameters
-|Paremeter|Long Name|Description|
+# Prepare accounts
+## Linux
+    cat << EOF > accounts.csv
+    Account,LoginName,Password,WebSite,Comments
+    my_gaccount,firstname.lastname@gmail.com,-,gmail.com,email provider
+    my_yaccount,firstname.lastname@yahoo.com,-,yahoo.com,email provider
+    EOF
+
+## Manual
+Export your passwords to csv file with following structure:
+
+| Account | LoginName | Password | WebSite | Comments |
+| --- | --- | ---| --- | --- |
+| My favourite service|your_account@your_domain.com|password|www.myfavouriteservice.nowhere|comment|
+
+Note: This is default export from KeePass.
+
+# Run
+
+## Windows
+    dotnet pwned-password-check-net.dll -p path_to_csv -l KeePass
+
+## Linux
+    dotnet-sdk.dotnet pwned-password-check-net.dll -p path_to_csv -l KeePass
+
+## Parameters
+
+There are two parameters required:
+
+|Parameter|Long Name|Description|
 |---|---|---|
 |p|path| Path to your csv file|
-|l|layout| Layout
+|l|layout| Choose Layout. Options: KeePass|
 
-> Currently only layout implemented is KeePass layout
 
-Command line 
-> dotnet pwned-password-check-net.dll -p path_to_csv -l KeePass
-# Sample output
+# Output
 
 This tool will group output according to your logins and for each login tries if password was compromised.
 
@@ -35,10 +61,8 @@ This tool will group output according to your logins and for each login tries if
 Login: your_login@your_domain.com, Breaches: breach1, breach2
 Possible pwned password - Account: My Favourite Page, Password: abcd123
 ....
-....
-Login: your_another_login@your_another_domain.com, Breaches: breach3, breach4
-Possible pwned password - Account: Some Page, Password: 123abcd
-....
+Login: firstname.lastname@gmail.com, Breaches: Adobe, Gaadi, GeekedIn, LinkedIn, MDPI, Modern Business Solutions, MPGH, NemoWeb, Onliner Spambot, River City Media Spam List, Ticketfly, Torrent Invites
+Possible pwned password - Account: my_account, Password: pwd
 ....
 ```
 # Remarks
